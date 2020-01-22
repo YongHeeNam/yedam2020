@@ -7,7 +7,7 @@ public class ForExample {
 			chr = (char) (chr +1);
 		}
 		boolean true0rFalse = true;
-		if(3 ) {
+		if(3 != 5 ) {
 			System.out.println("참소주입니다.");
 		}
 }
