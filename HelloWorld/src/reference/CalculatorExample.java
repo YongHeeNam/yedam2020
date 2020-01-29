@@ -5,16 +5,31 @@ public class CalculatorExample {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		print(5, "&&&");
-		printstar();
+		printstar(5, "+");
+		sum(1, 2);
+		int r = sum2(1, 2);
+		System.out.println("r의 값은: " +r);
+		String nyh = welcome("박규림");
+		System.out.println(nyh);
 	}
+	
+	public static int sum2(int a, int b) {
+		int result;
+		result = a + b;
+		return result ;
+	}
+	public static String welcome(String name) {
+		return "Hello " + name;
+	}
+	
 	public static void print (int a, String str) {
 		for (int i = 0; i <a; i++)
 			System.out.println(str);
 	}
-	public static void printstar() {
-		for (int i = 0; i < 5; i ++) {
+	public static void printstar(int k, String str) {
+		for (int i = 0; i < k; i ++) {
 			for (int j = 0; j <= i; j++)
-				System.out.print("*");
+				System.out.print(str);
 			System.out.println();
 		}
 	}
