@@ -23,8 +23,12 @@ public class StudentArrayExample {
 		
 		
 		stdAry[0] = sn;
-		stdAry[1] = stnt;
-		stdAry[2] = snt;
+		stdAry[1] = snt;
+		stdAry[2] = stnt;
+		
+		stdAry[0] = stdAry[1];
+		stdAry[1] = stdAry[2];
+		stdAry[2] = stdAry[0];
 		
 		for(int i=0; i<stdAry.length; i++) {
 //			if(stdAry[i].getName.equals("choi"))
