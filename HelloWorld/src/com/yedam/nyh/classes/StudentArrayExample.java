@@ -1,11 +1,20 @@
 package com.yedam.nyh.classes;
 
 public class StudentArrayExample {
+
+	static Student[] stdAry = new Student[3]; // 참조유형의 데이터Type
+
+	public static Student getStudent(String name) {
+			Student st1 = null;
+	for( int i = 0;i<stdAry.length;i++)
+	{
+		if (stdAry[i].getName().equals(name))
+			st1 = stdAry[i];
+	}
+	return st1;
+	}
+
 	public static void main(String[] args) {
-	
-		Student[] stdAry = new Student[3]; //참조유형의 데이터Type
-		
-		
 		Student sn = new Student ("choi",20,180,70);
 		
 		Student stnt = new Student(); //student class의 인스턴스
@@ -37,5 +46,5 @@ public class StudentArrayExample {
 		
 		
 		
-	}
-	}
+	}// end of main
+}
