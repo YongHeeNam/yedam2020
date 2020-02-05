@@ -17,7 +17,7 @@ public class DAO {
 		String url = "jdbc:oracle:thin:@192.168.0.69:1521:xe";
 
 		try {
-			Class.forName("oracle.jdbc.driver.OraceDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, passwd);
 			System.out.println("연결성공");
 		} catch (ClassNotFoundException | SQLException e) {

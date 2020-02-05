@@ -2,7 +2,7 @@ package com.yedam.nyh.Interfaces.impl;
 
 import com.yedam.nyh.Interfaces.model.EmpService;
 import com.yedam.nyh.Interfaces.model.Employee;
-
+import com.yedam.nyh.Interfaces.model.Employees;
 
 public class EmpServiceImpl implements EmpService {
 
@@ -42,5 +42,24 @@ public class EmpServiceImpl implements EmpService {
 			}
 		}
 	}
+
+	@Override
+	public void searchEmployees() {
+		System.out.println("디비조회");
+		EmpDAO dao = new EmpDAO();
+		Employees[] empArray = dao.getEmployees();
+		for (Employees emp : empArray) {
+			if (emp != null) {
+				System.out.println(emp);
+			}
+		}
+	} // end of searchEmployees
+
+	@Override
+	public void insertEmployees(Employees emp) {
+		System.out.println("디비 입력 기능");
+		EmpDAO dao = new EmpDAO();
+		dao.insertEmployees(emp);
+	} // end of insertEmployees
 
 }
