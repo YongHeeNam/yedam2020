@@ -78,9 +78,14 @@ public class EmpDAO {
 	public void updateEmployees(Employees emp) {
 		conn = DAO.getConnect();
 		String sql = "update emp_temp " + 
-				"set salary = salary + ? " + 
-				", email = ? " + 
-				"where employee_id = ?";
+				"set first_name = first_name";
+		if(emp.getSalary() == 0) {
+			sql = sql + ", salary = salary + ?";
+		}
+		if (emp.getEmail() != null) {
+			sql = sql + ", email = ?" ;
+		}
+		sql = sql + "where employee_id = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, emp.getSalary());
