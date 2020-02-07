@@ -77,29 +77,30 @@ public class EmpDAO {
 	// 4.디비수정
 	public void updateEmployees(Employees emp) {
 		conn = DAO.getConnect();
-		String sql = "update emp_temp " + 
-				"set first_name = first_name";
-		if(emp.getSalary() == 0) {
-			sql = sql + ", salary = salary + ?";
-		}
-		if (emp.getEmail() != null) {
-			sql = sql + ", email = ?" ;
-		}
-		sql = sql + "where employee_id = ?";
+		String sql = "update emp_temp " + "set first_name = first_name";
+		if (emp.getSalary() != 0)
+			sql += ", salary = salary + ?";
+		if (emp.getEmail() != null)
+			sql += ", email = ?";
+		sql += "where employee_id = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, emp.getSalary());
-			pstmt.setString(2, emp.getEmail());
-			pstmt.setInt(3, emp.getEmployeeId());
+			int cnt = 0;
+			if (emp.getSalary() != 0)
+				pstmt.setInt(++cnt, emp.getSalary());
+			if (emp.getEmail() != null)
+				pstmt.setString(++cnt, emp.getEmail());
+			pstmt.setInt(++cnt, emp.getEmployeeId());
 			int r = pstmt.executeUpdate();
-			System.out.println(r+ "건이 변경되었습니다.");
-			
+			System.out.println(r + "건이 변경되었습니다.");
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DAO.close(conn);
 		}
 	}
+
 	// 5. 디비삭제
 	public void deleteEmployees(int empId) {
 		conn = DAO.getConnect();
@@ -113,8 +114,9 @@ public class EmpDAO {
 		} finally {
 			DAO.close(conn);
 		}
-		
+
 	}
+
 	public void insertEmployees(Employees emp) {
 		Connection conn = DAO.getConnect();
 		String sql = "insert into emp_temp (employee_id, last_name, email, hire_date, job_id)"

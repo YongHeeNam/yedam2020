@@ -66,9 +66,13 @@ public class EmpProc {
 			} else if (menu == 8) {
 				System.out.println("조회 사원번호 입력 :");
 				int empId = scn.nextInt();
-				System.out.println("급여 인상분 입력 : ");
-				int sal = scn.nextInt();scn.nextLine();
-				System.out.println("변경할 이메일 입력 :");
+				scn.nextLine();
+				System.out.println("급여 인상분 입력 : (엔터) ");
+				String salNum = scn.nextLine();
+				int sal = 0;
+				if (salNum != null && !salNum.equals(""))
+					sal = Integer.parseInt(salNum);
+				System.out.println("변경할 이메일 입력 : (엔터)");
 				String email = scn.nextLine();
 
 				Employees emp = new Employees();
@@ -81,7 +85,7 @@ public class EmpProc {
 			} else if (menu == 9) {
 				System.out.println("삭제 사원번호 입력 :");
 				int empId = scn.nextInt();
-				
+
 				service.deleteDBemp(empId);
 			}
 		} // end of while
